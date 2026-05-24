@@ -1,348 +1,581 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Meta tags and page setup -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio - Modern & Dynamic</title>
+  <title>Abrha Gebrehiwet | Data Analyst Portfolio</title>
   <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
   <style>
-    /* ====== Theme Variables ====== */
+    /* ====== Base Design System & Colors ====== */
     :root {
-      --color-bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      --color-text-primary: #f3f4f6;
-      --color-text-secondary: #d1d5db;
+      --color-bg-deep: #050714;
+      --color-bg-gradient: linear-gradient(135deg, #050714, #0b1120, #0f172a);
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #94a3b8;
       --color-accent: #facc15;
       --color-accent-hover: #eab308;
-      --color-accent-shadow: rgba(250, 204, 21, 0.3);
-      --color-bg-card: rgba(255, 255, 255, 0.05);
-      --color-bg-card-hover: rgba(255, 255, 255, 0.12);
-      --color-shadow-dark: rgba(0, 0, 0, 0.3);
       --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --max-width-container: 1140px;
       --transition-speed: 0.3s;
-      --border-radius: 12px;
-      --max-width-container: 1200px;
     }
 
-    /* ====== Modern Footer Styles ====== */
-    .modern-footer {
-      background: linear-gradient(135deg, #0a1a1f 0%, #1a2f3a 50%, #2a4a5a 100%);
-      position: relative;
-      overflow: hidden;
-      margin-top: 4rem;
-      color: var(--color-text-secondary);
+    body {
+      background: var(--color-bg-gradient);
+      color: var(--color-text-primary);
       font-family: var(--font-family-base);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
 
-    /* Animated background particles */
-    .modern-footer::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(250, 204, 21, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 40% 60%, rgba(250, 204, 21, 0.05) 0%, transparent 50%);
-      animation: floatingParticles 20s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes floatingParticles {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
-      50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
-    }
-
-    /* Top accent line with gradient animation */
-    .footer-accent-line {
-      height: 4px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--color-accent) 25%, 
-        #fde047 50%, 
-        var(--color-accent) 75%, 
-        transparent 100%);
-      background-size: 200% 100%;
-      animation: gradientShift 4s ease-in-out infinite;
-    }
-
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    /* Main footer content */
-    .footer-content {
+    /* ====== Universal Section Framing ====== */
+    .section-container {
       max-width: var(--max-width-container);
       margin: 0 auto;
-      padding: 4rem 2rem 2rem;
-      position: relative;
-      z-index: 2;
+      padding: 5rem 2rem;
+      box-sizing: border-box;
     }
 
-    /* Footer grid layout */
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 3rem;
-      margin-bottom: 3rem;
+    /* ====== Header & Navigation Bar ====== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      max-width: var(--max-width-container);
+      margin: 0 auto;
     }
-
-    /* Footer sections */
-    .footer-section {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(250, 204, 21, 0.1);
-      backdrop-filter: blur(10px);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .footer-section::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .footer-section:hover::before {
-      left: 100%;
-    }
-
-    .footer-section:hover {
-      transform: translateY(-8px);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(250, 204, 21, 0.3);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Section titles */
-    .footer-section h3 {
-      color: var(--color-accent);
-      font-size: 1.4rem;
+    header h1 {
+      font-size: 1.6rem;
+      color: var(--color-text-primary);
+      margin: 0;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
+    }
+    nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color var(--transition-speed);
+    }
+    nav a:hover {
+      color: var(--color-accent);
     }
 
-    .footer-section h3::after {
+    /* ====== Section Text Badges ====== */
+    .section-label-badge {
+      border: 2px solid var(--color-accent);
+      color: var(--color-text-primary);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ====== 01. Hero Workspace Section ====== */
+    .hero-layout {
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      gap: 4rem;
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+    }
+    .hero-content {
+      flex: 1;
+      max-width: 580px;
+    }
+    .hero-primary-headline {
+      font-size: 3.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 1rem 0;
+      letter-spacing: -1px;
+    }
+    .hero-primary-headline span {
+      color: var(--color-accent);
+    }
+    .hero-tagline-subtext {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      margin: 0 0 2rem 0;
+    }
+    .hero-tagline-subtext span {
+      color: var(--color-accent);
+    }
+    
+    /* Global Buttons System */
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .hero-social-links {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .social-icon-circle {
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--color-text-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all var(--transition-speed) ease;
+    }
+    .social-icon-circle:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+    .portfolio-btn {
+      padding: 11px 26px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition-speed) ease;
+    }
+    .btn-outline-white {
+      border: 2px solid var(--color-text-primary);
+      color: var(--color-text-primary);
+    }
+    .btn-outline-white:hover {
+      background: var(--color-text-primary);
+      color: #050714;
+    }
+    .btn-outline-gold {
+      border: 2px solid var(--color-accent);
+      color: var(--color-accent);
+    }
+    .btn-outline-gold:hover {
+      background: var(--color-accent);
+      color: #050714;
+    }
+
+    /* Profile Avatar Container */
+    .hero-avatar-column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .avatar-wrapper-circle {
+      position: relative;
+      width: 235px; 
+      height: 235px;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      border: 5px solid #ffffff;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-speed) ease;
+    }
+    .avatar-wrapper-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transform: scale(1.05);
+    }
+
+    /* ====== 02. Integrated About Stack ====== */
+    .about-split-layout {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .about-left-title h2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+    .about-left-title h2 span {
+      color: var(--color-accent);
+    }
+    .about-right-desc {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #ffffff;  
+      margin: 0;
+    }
+    .about-right-desc .highlight {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* ====== 03. Skills Grid Sections with Vertical Separators ====== */
+    .skills-columns-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: left;
+    }
+    .skills-column {
+      position: relative;
+      padding-right: 1.5rem;
+    }
+    .skills-column:not(:last-child)::after {
       content: "";
       position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-accent);
-      transition: width 0.4s ease;
+      right: 0;
+      top: 5%;
+      width: 2px;
+      height: 90%;
+      background: linear-gradient(to bottom, rgba(250, 204, 21, 0) 0%, rgba(250, 204, 21, 0.4) 50%, rgba(250, 204, 21, 0) 100%);
     }
-
-    .footer-section:hover h3::after {
-      width: 100%;
+    .skills-column h3 {
+      color: var(--color-accent); 
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 2rem 0;
+      line-height: 1.3;
     }
-
-    /* Links styling */
-    .footer-links {
+    .skill-row-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .icon-circle-wrapper {
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--color-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-circle-wrapper i {
+      font-size: 1.2rem;
+      color: var(--color-accent);
+    }
+    .skill-row-item p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff; 
+    }
+    .methods-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
-    .footer-links li {
-      margin-bottom: 0.8rem;
-      transform: translateX(0);
-      transition: all 0.3s ease;
-    }
-
-    .footer-links li:hover {
-      transform: translateX(8px);
-    }
-
-    .footer-links a {
-      color: var(--color-text-secondary);
-      text-decoration: none;
-      font-weight: 500;
+    .methods-list li {
       font-size: 1rem;
+      margin-bottom: 0.7rem;
       position: relative;
-      transition: all 0.3s ease;
-      display: inline-block;
+      padding-left: 1.2rem;
+      color: #ffffff; 
     }
-
-    .footer-links a::before {
-      content: "→";
+    .methods-list li::before {
+      content: "•";
+      color: var(--color-accent);
       position: absolute;
-      left: -20px;
-      opacity: 0;
+      left: 0;
+    }
+
+    /* ====== 04. Unified Stacked Projects Framework ====== */
+    .project-stacked-row {
+      margin-bottom: 5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 4rem;
+    }
+    .project-stacked-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .project-header-block {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .project-index-number {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #ffffff; 
+    }
+    .project-row-headline {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin: 0;
       color: var(--color-accent);
-      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .project-body-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .project-visual-frame {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+    .project-visual-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .project-details-pane {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .project-row-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #ffffff; /* Base text color changed back to pure white */
+      margin: 0 0 2rem 0;
+    }
+    .project-row-desc .gold-text {
+      color: var(--color-accent); /* Custom class to apply the golden emphasis to specific words */
+      font-weight: 600;
+    }
+    .project-metadata-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-accent); 
+      margin-bottom: 0.6rem;
+    }
+    .project-row-tags {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .project-row-tags .badge {
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff; 
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .project-row-actions {
+      display: flex;
+      gap: 1rem;
     }
 
-    .footer-links a:hover::before {
-      opacity: 1;
-      left: -25px;
+    /* ====== 05. Modular Contact & Footer Layout ====== */
+    .contact-footer-split {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: flex-start;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 5rem;
     }
-
-    .footer-links a:hover {
+    .contact-left-block h2 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 0 0 2.5rem 0;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+    .contact-left-block h2 span {
       color: var(--color-accent);
-      text-shadow: 0 0 8px rgba(250, 204, 21, 0.4);
     }
-
-    /* Contact info special styling */
-    .contact-item {
+    .contact-links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .contact-node-row {
       display: flex;
       align-items: center;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    .contact-item:hover {
-      background: rgba(250, 204, 21, 0.1);
-    }
-
-    .contact-icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 12px;
-      color: var(--color-accent);
-      font-weight: bold;
-    }
-
-    /* Motto section */
-    .footer-motto {
-      text-align: center;
-      margin: 3rem 0 2rem;
-      position: relative;
-    }
-
-    .motto-text {
-      font-size: 1.3rem;
-      font-weight: 600;
-      font-style: italic;
-      color: var(--color-accent);
-      text-shadow: 
-        0 0 10px rgba(250, 204, 21, 0.3),
-        0 0 20px rgba(250, 204, 21, 0.2),
-        0 0 30px rgba(250, 204, 21, 0.1);
-      animation: gentleGlow 3s ease-in-out infinite alternate;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    @keyframes gentleGlow {
-      0% { text-shadow: 0 0 10px rgba(250, 204, 21, 0.3), 0 0 20px rgba(250, 204, 21, 0.2); }
-      100% { text-shadow: 0 0 15px rgba(250, 204, 21, 0.4), 0 0 25px rgba(250, 204, 21, 0.3); }
-    }
-
-    /* Copyright section */
-    .footer-bottom {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-
-    .copyright-text {
-      font-size: 0.95rem;
+      gap: 1.2rem;
+      text-decoration: none;
       color: var(--color-text-secondary);
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
+      transition: color var(--transition-speed);
+    }
+    .contact-node-row:hover {
+      color: var(--color-accent);
+    }
+    .contact-node-row i {
+      font-size: 1.3rem;
+      color: var(--color-accent);
+      width: 24px;
+      text-align: center;
+    }
+    .contact-node-text p {
+      margin: 0;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .contact-node-text h4 {
+      margin: 2px 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .contact-node-row:hover .contact-node-text h4 {
+      color: var(--color-accent);
     }
 
-    .footer-bottom:hover .copyright-text {
-      opacity: 1;
+    /* Right Block Footer Links */
+    .footer-right-block {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .footer-nav-col h3 {
+      color: var(--color-accent);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 1.5rem 0;
+    }
+    .footer-nav-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-nav-col li {
+      margin-bottom: 0.8rem;
+    }
+    .footer-nav-col a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color var(--transition-speed);
+    }
+    .footer-nav-col a:hover {
+      color: var(--color-accent);
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .footer-content {
-        padding: 3rem 1rem 1rem;
+    /* Bottom Credit Band */
+    .bottom-credit-strip {
+      max-width: var(--max-width-container);
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ====== Adaptive Responsive Engine ====== */
+    @media (max-width: 992px) {
+      .hero-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding-top: 1rem;
       }
-
-      .footer-grid {
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        order: 1;
+      }
+      .hero-avatar-column {
+        order: 0;
+      }
+      .avatar-wrapper-circle {
+        width: 165px; 
+        height: 165px;
+        border-width: 4px;
+      }
+      .hero-primary-headline {
+        font-size: 3rem;
+        margin: 1rem 0 0.5rem 0;
+      }
+      .hero-tagline-subtext {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+      }
+      .about-split-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .skills-columns-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem;
+      }
+      .skills-column {
+        padding-right: 0;
+      }
+      .skills-column:not(:last-child)::after {
+        display: none;
+      }
+      .project-body-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-
-      .footer-section {
-        padding: 1.5rem;
-      }
-
-      .motto-text {
-        font-size: 1.1rem;
-        padding: 0 1rem;
-      }
-
-      .footer-links a::before {
-        display: none;
-      }
-
-      .footer-links li:hover {
-        transform: translateX(4px);
+      .contact-footer-split {
+        grid-template-columns: 1fr;
+        gap: 4rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .footer-content {
-        padding: 2rem 0.5rem 1rem;
+    @media (max-width: 600px) {
+      .skills-columns-grid {
+        grid-template-columns: 1fr;
       }
-
-      .footer-section {
-        padding: 1rem;
+      .action-row {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
       }
-
-      .footer-section h3 {
-        font-size: 1.2rem;
+      .action-row .portfolio-btn {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
       }
-
-      .motto-text {
-        font-size: 1rem;
+      .bottom-credit-strip {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
       }
-    }
-
-    /* Accessibility improvements */
-    @media (prefers-reduced-motion: reduce) {
-      .modern-footer::before,
-      .footer-accent-line,
-      .motto-text {
-        animation: none;
+      .footer-right-block {
+        grid-template-columns: 1fr;
       }
-      
-      .footer-section,
-      .footer-links li,
-      .footer-links a {
-        transition: none;
-      }
-    }
-
-    /* Focus states for accessibility */
-    .footer-links a:focus {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
-      border-radius: 4px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header with navigation links -->
   <header>
     <h1>Abrha G.</h1>
     <nav>
-      <ul class="nav-links">
+      <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">About Me</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -351,227 +584,324 @@
   </header>
 
   <main>
-    <!-- Profile section -->
-    <section class="profile-container" id="home">
-      <div class="profile-image-wrapper">
-        <img src="images/photo_2025-04-09_14-26-19.jpg" alt="profile-picture">
-      </div>
-      <div class="profile-text">
-        <h2>Hello, I'm <span>Abrha</span> Gebrehiwet.</h2>
-        <p>PLP Africa Software Scholar | Aspiring Full-Stack Web developer.</p>
-        <p>Crafting Tech Solutions for a More Inclusive World.</p>
-        <div class="buttons">
-          <a href="icons/CV_File/Abrha_Gebrehiwet_Resume.docx" class="btn btn-secondary" download>Download CV</a>
-          <a href="#contact" class="btn btn-primary">Hire Me</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About section -->
-    <section class="about-section" id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-container">
-        <div class="about-text">
-          <h4>"A Glimpse Into My World"</h4>
-          <p>
-            I'm <strong>Abrha Gebrehiwet</strong>, Computer Science student passionate about using technology for social good.
-          </p>
-          <p>
-            I value ethical tech, community empowerment, and continuous learning.
-          </p>
-        </div>
-        <!-- Interest Card -->
-        <div class="about-interest">
-          <h4>Interests</h4>
-          <div class="icon-item">
-            <img src="icons/artificial-inteli.jpeg" alt="AI" class="interest-icon" />
-            <p class="icon-label">AI for Social Impact</p>
-          </div>
-          <div class="icon-item">
-            <img src="icons/web_Dev.png" alt="Web Development" class="interest-icon" />
-            <p class="icon-label">Web Development & UX</p>
-          </div>
-        </div>
-        <!-- Education and courses -->
-        <div class="about-edu">
-          <h4>Education</h4>
-          <p>
-            BSc in Computer Science<br>
-            Mekelle University, Ethiopia<br>
-            (expected graduate: 2026)
-          </p>
-          <p>
-            PLP Africa – Software Development Scholar<br>
-            Power Learn Project Africa (2025 ,July cohort)
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills section -->
-    <section class="skills-section" id="skills">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <img src="./icons/icons8-html5-50.png" alt="HTML5 Icon">
-          <p>HTML5</p>
-        </div>
-        <div class="skill-card">
-          <img src="./icons/image.png" alt="CSS3 Icon">
-          <p>CSS3</p>
-        </div>
-        <div class="skill-card">
-          <img src="./icons/icons8-python-48.png" alt="Python Icon">
-          <p>Python</p>
-        </div>
-        <div class="skill-card">
-          <img src="./icons/git.png" alt="Git Icon">
-          <p>Git</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects section -->
-    <section class="projects-section" id="projects">
-      <h2 class="section-title">My Projects</h2>
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <img src="./images/hotel-booking-system.PNG" alt="Hotel Booking System Project Screenshot" />
-          <div class="project-content">
-            <h4>Project 1: Hotel Booking System</h4>
-            <p class="project-desc">
-              A responsive hotel reservation system that allows users to book rooms, check availability, and manage bookings efficiently using HTML, CSS, and JavaScript.
-            </p>
-            <div class="project-buttons">
-              <a href="https://github.com/Abricos-gt/frontendHotel_book.git" class="project-button" target="_blank">View On Github</a>
-            </div>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card">
-          <img src="./images/refugee-care.PNG" alt="Refugee Care Project Screenshot" />
-          <div class="project-content">
-            <h4>Project 2: Refugee Care</h4>
-            <p class="project-desc">
-              A digital platform built for refugees to access health services, request assistance, and connect directly with aid workers — designed with simplicity and accessibility in mind.
-            </p>
-            <div class="project-buttons">
-              <a href="https://github.com/Abricos-gt/refugee-care.git" class="project-button" target="_blank">View On Github</a>
-            </div>
-          </div>
-        </div>
-        <!-- Project 3 -->
-        <div class="project-card">
-          <img src="./images/portfolio-plp.PNG" alt="Portfolio Website Project Screenshot" />
-          <div class="project-content">
-            <h4>Project 3: My Portfolio</h4>
-            <p class="project-desc">
-              This project was developed in <b> collaboration with my deskie</b> as part of the PLP Hackathon, A personal website that showcases my skills, projects, and background. Built with a modern layout using HTML and CSS, focused on clarity and user engagement. 
-            </p>
-            <div class="project-buttons">
-              <a href="https://github.com/Abricos-gt/PORTFOLIO-HACKATON.git" class="project-button" target="_blank">View Code</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact section with form -->
-    <section class="contact-section" id="contact">
-      <div class="contact-container">
-        <div class="contact-info">
-          <h2>Get in Touch</h2>
-          <p>I'm open to opportunities, collaborations, or any exciting ideas. Let's connect!</p>
-          <ul>
-            <li><strong>Email:</strong> <a href="mailto:abrishg.tesfamichael@gmail.com" target="_blank">abrishg.tesfamichael@gmail.com</a></li>
-            <li><strong>Linkedin:</strong> <a href="https://www.linkedin.com/in/abrha-gebrehiwet-97410725b" target="_blank">Linkedin</a></li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/Abricos-gt" target="_blank">https://github.com/Abricos-gt</a></li>
-            <li><strong>Phone:</strong> +251-986-787-287</li>
-            <li><strong>Location:</strong> Ethiopia (Remote Available)</li>
-          </ul>
-        </div>
-        <form class="contact-form">
-          <h3>Send a Message</h3>
-          <div class="input-group">
-            <input type="text" placeholder="Your Name" required />
-          </div>
-          <div class="input-group">
-            <input type="email" placeholder="Your Email" required />
-            <input type="text" placeholder="Subject" required />
-          </div>
-          <div class="input-group">
-            <textarea rows="5" placeholder="Your Message" required></textarea>
-          </div>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Modern Footer -->
-  <footer class="modern-footer">
-    <div class="footer-accent-line"></div>
     
-    <div class="footer-content">
-      <div class="footer-grid">
-        <!-- Connect Section -->
-        <div class="footer-section">
-          <h3>Connect</h3>
-          <ul class="footer-links">
-            <li><a href="https://github.com/Abricos-gt" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://linkedin.com/in/abrha-gebrehiwet-97410725b" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://wa.me/00249125505922" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-            <li><a href="https://t.me/@Bipo2099" target="_blank" rel="noopener noreferrer">Telegram</a></li>
-            <li><a href="https://web.facebook.com/abrha.gebrehiwet.99" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="footer-section">
-          <h3>Get In Touch</h3>
-          <div class="contact-item">
-            <span class="contact-icon">✉</span>
-            <a href="mailto:abrishg.tesfamichael@gmail.com">abrishg.tesfamichael@gmail.com</a>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">📱</span>
-            <span>+251 986 787 287</span>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">📍</span>
-            <span>Ethiopia (Remote Available)</span>
+    <section class="section-container" id="home">
+      <div class="hero-layout">
+        
+        <div class="hero-avatar-column">
+          <div class="avatar-wrapper-circle">
+            <img src="images/photo_2025-04-09_14-26-19.jpg" alt="Abrha Gebrehiwet Profile Canvas Image">
           </div>
         </div>
 
-        <!-- Quick Links Section -->
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+        <div class="hero-content">
+          <div class="section-label-badge">Data Analyst</div>
+          
+          <h2 class="hero-primary-headline"><span>Abrha Gebrehiwet</span></h2>
+          <p class="hero-tagline-subtext" style="color: #ffffff; font-weight: 600; margin-bottom: 0.5rem;"></p>
+          
+          <p class="hero-tagline-subtext" style="font-size: 1.15rem; color: #ffffff;">
+            I help people finding <span style="color: var(--color-accent);">insights through data</span>
+          </p>
+          
+          <div class="action-row" style="margin-top: 1.5rem;">
+            <div class="hero-social-links">
+              <a href="https://linkedin.com/in/abrha-gebrehiwet-97410725b" target="_blank" rel="noopener noreferrer" class="social-icon-circle">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://wa.me/251986787287" target="_blank" rel="noopener noreferrer" class="social-icon-circle">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a href="mailto:abrishg.tesfamichael@gmail.com" class="social-icon-circle">
+                <i class="fa-regular fa-envelope"></i>
+              </a>
+            </div>
+           <a href="#projects" class="portfolio-btn btn-outline-white">Projects</a>
+            <a href="icons/CV_File/abrhaCV.pdf" class="portfolio-btn btn-outline-gold" download>Download CV</a></div>
         </div>
+
       </div>
+    </section>
 
-      <!-- Motto Section -->
-      <div class="footer-motto">
-        <p class="motto-text">
-          "Innovating for Inclusion — Bridging Technology and Humanity"
+    <section class="section-container" id="about">
+      <div class="section-label-badge">About Me</div>
+      <div class="about-split-layout">
+        <div class="about-left-title">
+          <h2>Hello, I'm <span>Abrha!</span></h2>
+        </div>
+        <p class="about-right-desc">
+          I am a driven <span class="highlight">Data Analyst</span> and Computer Science finalist at <span class="highlight">Mekelle University</span>. I specialize in turning complex healthcare, financial, and operational datasets into clean, actionable growth strategies. Proficient in <span class="highlight">SQL, Python, Excel, Statistics, Tableau, and Google Looker Studio</span>, I build robust pipelines and dynamic dashboards to help teams eliminate operational blind spots, automate workflows, and make confident, data-backed decisions.
         </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Copyright -->
-    <div class="footer-bottom">
-      <p class="copyright-text">
-        &copy; 2025 Abrha Gebrehiwet. All rights reserved. | Crafted with passion and purpose.
-      </p>
-    </div>
-  </footer>
+    <section class="section-container" id="skills">
+      <div class="section-label-badge">Skills</div>
+      <div class="skills-columns-grid">
+        
+        <div class="skills-column">
+          <h3>Programming<br>Languages</h3>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-solid fa-database"></i></div>
+            <p>SQL</p>
+          </div>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-brands fa-python"></i></div>
+            <p>Python</p>
+          </div>
+        </div>
+
+        <div class="skills-column">
+          <h3>Data Analyst<br>Tools</h3>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-regular fa-file-excel"></i></div>
+            <p>Microsoft Excel</p>
+          </div>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-solid fa-table-cells"></i></div>
+            <p>Google Sheets</p>
+          </div>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-solid fa-server"></i></div>
+            <p>Google BigQuery</p>
+          </div>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-solid fa-code"></i></div>
+            <p>Visual Code Studio</p>
+          </div>
+        </div>
+
+        <div class="skills-column">
+          <h3>Data Visualization<br>Tools</h3>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-solid fa-chart-line"></i></div>
+            <p>Tableau</p>
+          </div>
+          <div class="skill-row-item">
+            <div class="icon-circle-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
+            <p>Power BI</p>
+          </div>
+        </div>
+
+        <div class="skills-column">
+          <h3>Data Analytic<br>Methods</h3>
+          <ul class="methods-list">
+            <li>EDA</li>
+            <li>Segmentation / Clustering</li>
+            <li>Cohort</li>
+            <li>Linear Regression</li>
+            <li>Logistic Regression</li>
+            <li>Statistic</li>
+            <li>A/B Testing</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section-container" id="projects">
+      <div class="section-label-badge">Recent Projects</div>
+      
+      <div class="project-stacked-row">
+        <div class="project-header-block">
+          <span class="project-index-number">01</span>
+          <h4 class="project-row-headline">Airbnb Booking Analysis | Exploratory Data Analysis (EDA)</h4>
+        </div>
+        <div class="project-body-grid">
+          <div class="project-visual-frame">
+            <img src="./images/air_BNB.png" alt="Airbnb Booking EDA Analysis Dashboard Look" />
+          </div>
+          <div class="project-details-pane">
+            <p class="project-row-desc">
+              An end-to-end analysis focused on <span class="gold-text">uncovering key demand drivers</span> for booking trends. By performing comprehensive data cleaning, outlier handling, and deep bivariate analysis with Pandas & Matplotlib, this project identifies critical factors beyond pricing that directly <span class="gold-text">influence customer booking decisions</span>.
+            </p>
+            <div class="project-metadata-label">Tools:</div>
+            <div class="project-row-tags">
+              <span class="badge">Python</span>
+              <span class="badge">Power BI</span>
+              <span class="badge">EDA</span>
+            </div>
+            <div class="project-row-actions">
+              <a href="https://github.com/abrhagebrehiwet/AirBnB-Booking-Analysis-using-EDA.git" class="portfolio-btn btn-outline-white" target="_blank">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div class="project-stacked-row">
+        <div class="project-header-block">
+          <span class="project-index-number">05</span>
+          <h4 class="project-row-headline">Customer Behavior Analysis</h4>
+        </div>
+        <div class="project-body-grid">
+          <div class="project-visual-frame">
+            <img src="./images/customer_behavior_dasshboard.png" alt="Customer Behavior Analytics Power BI Layout View" />
+          </div>
+          <div class="project-details-pane">
+            <p class="project-row-desc">
+              Enterprise retail intelligence solution focused on <span class="gold-text">optimizing consumer engagement</span> strategies. Uses SQL for intricate transaction queries and Python behavioral modeling to construct high-impact Power BI dashboards that successfully <span class="gold-text">uncover high-value purchasing patterns</span>.
+            </p>
+            <div class="project-metadata-label">Tools:</div>
+            <div class="project-row-tags">
+              <span class="badge">Python</span>
+              <span class="badge">Power BI</span>
+              <span class="badge">SQL</span>
+            </div>
+            <div class="project-row-actions">
+              <a href="https://github.com/abrhagebrehiwet/Customer-Behavior-Analysis.git" class="portfolio-btn btn-outline-white" target="_blank">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div> 
+      
+      <div class="project-stacked-row">
+        <div class="project-header-block">
+          <span class="project-index-number">04</span>
+          <h4 class="project-row-headline">Web Scraping and EDA of Job Market Trends in Ethiopia</h4>
+        </div>
+        <div class="project-body-grid">
+          <div class="project-visual-frame">
+            <img src="./images/job_market_analysis.png" alt="Job Market Analytics Pipeline Architecture" />
+          </div>
+          <div class="project-details-pane">
+            <p class="project-row-desc">
+              An automated data mining initiative designed to <span class="gold-text">extract job market insights</span> from etcareers.com for SDG 8. The script parses unstructured web data and transforms it into clean analytical layers to successfully <span class="gold-text">align emerging recruitment fields</span> with regional economic metrics.
+            </p>
+            <div class="project-metadata-label">Tools:</div>
+            <div class="project-row-tags">
+              <span class="badge">Python</span>
+              <span class="badge">Regex</span>
+              <span class="badge">Visualization</span>
+            </div>
+            <div class="project-row-actions">
+              <a href="https://github.com/abrhagebrehiwet/ethiopia-job-market-eda.git" class="portfolio-btn btn-outline-white" target="_blank">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="project-stacked-row">
+        <div class="project-header-block">
+          <span class="project-index-number">03</span>
+          <h4 class="project-row-headline">House Price Prediction – End-to-End Data Analytics Project</h4>
+        </div>
+        <div class="project-body-grid">
+          <div class="project-visual-frame">
+            <img src="./images/house_price_prediction.png" alt="House Valuation Model Density Spread Map" />
+          </div>
+          <div class="project-details-pane">
+            <p class="project-row-desc">
+              A full-scale real estate analytics project engineered to <span class="gold-text">forecast property valuations</span>. This end-to-end pipeline features intensive feature engineering, data imputation, and advanced model tuning, successfully identifying the primary variables that <span class="gold-text">drive regional pricing trends</span>.
+            </p>
+            <div class="project-metadata-label">Tools:</div>
+            <div class="project-row-tags">
+              <span class="badge">Python</span>
+              <span class="badge">Machine Learning</span>
+              <span class="badge">Power BI</span>
+              <span class="badge">Regex</span>
+            </div>
+            <div class="project-row-actions">
+              <a href="https://github.com/abrhagebrehiwet/-End-to-End-House-Price-Analysis-and-Prediction.git" class="portfolio-btn btn-outline-white" target="_blank">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-stacked-row">
+        <div class="project-header-block">
+          <span class="project-index-number">02</span>
+          <h4 class="project-row-headline">Proactive Child Malnutrition Prediction System</h4>
+        </div>
+        <div class="project-body-grid">
+          <div class="project-visual-frame">
+            <img src="./images/predicting_child_malnutrition.png" alt="Proactive Malnutrition Risk Matrix Diagnostic Graphic" />
+          </div>
+          <div class="project-details-pane">
+            <p class="project-row-desc">
+              This machine learning framework processes raw physiological measurements to <span class="gold-text">predict acute malnutrition risk</span> in vulnerable populations. By mapping field data into standardized WHO growth z-scores, the predictive system evaluates complex health metrics to <span class="gold-text">enable early clinical decision support</span>.
+            </p>
+            <div class="project-metadata-label">Tools:</div>
+            <div class="project-row-tags">
+              <span class="badge">Python</span>
+              <span class="badge">Machine Learning</span>
+            </div>
+            <div class="project-row-actions">
+              <a href="https://github.com/abrhagebrehiwet/child_malnutrtion_predictive_system_using_machine_learning.git" class="portfolio-btn btn-outline-white" target="_blank">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+      
+
+    </section>
+
+    <section class="section-container" id="contact">
+      <div class="contact-footer-split">
+        
+        <div class="contact-left-block">
+          <h2>Let's <span>connect</span> and<br>work together!</h2>
+          <div class="contact-links-stack">
+            
+            <a href="mailto:abrishg.tesfamichael@gmail.com" class="contact-node-row" target="_blank">
+              <i class="fa-regular fa-envelope"></i>
+              <div class="contact-node-text">
+                <p>Email</p>
+                <h4>abrishg.tesfamichael@gmail.com</h4>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/abrha-gebrehiwet-97410725b" class="contact-node-row" target="_blank">
+              <i class="fa-brands fa-linkedin-in"></i>
+              <div class="contact-node-text">
+                <p>LinkedIn</p>
+                <h4>Abrha Gebrehiwet</h4>
+              </div>
+            </a>
+
+            <a href="https://github.com/Abricos-gt" class="contact-node-row" target="_blank">
+              <i class="fa-brands fa-github"></i>
+              <div class="contact-node-text">
+                <p>GitHub</p>
+                <h4>https://github.com/Abricos-gt</h4>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="footer-right-block">
+          <div class="footer-nav-col">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Me</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#projects">Projects</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h3>Social Channels</h3>
+            <ul>
+              <li><a href="https://wa.me/251986787287" target="_blank">WhatsApp</a></li>
+              <li><a href="https://t.me/@Bipo2099" target="_blank">Telegram</a></li>
+              <li><a href="https://web.facebook.com/abrha.gebrehiwet.99" target="_blank">Facebook</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div class="bottom-credit-strip">
+    <p>&copy; 2026 Abrha Gebrehiwet. All rights reserved.</p>
+    <p>Crafted with passion and purpose.</p>
+  </div>
 
 </body>
 </html>
